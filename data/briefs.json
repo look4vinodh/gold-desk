@@ -1,0 +1,174 @@
+[
+ {
+  "bias": "lean_sell",
+  "confidence": "medium",
+  "date": "2026-09-28",
+  "events": [
+   {
+    "event": "US Consumer Confidence & JOLTS job openings",
+    "impact": "medium",
+    "when": "Tue 29 Sep, 7:30 pm"
+   },
+   {
+    "event": "ADP private payrolls",
+    "impact": "medium",
+    "when": "Wed 30 Sep, 5:45 pm"
+   },
+   {
+    "event": "US Q2 GDP & PCE inflation",
+    "impact": "high",
+    "note": "Hot PCE = more hike odds = pressure on gold.",
+    "when": "Wed 30 Sep, 6:00 pm"
+   },
+   {
+    "event": "ISM Manufacturing PMI",
+    "impact": "medium",
+    "when": "Thu 1 Oct, 7:30 pm"
+   },
+   {
+    "event": "US Nonfarm Payrolls",
+    "impact": "high",
+    "note": "Biggest event of the week for gold.",
+    "when": "Fri 2 Oct, 6:00 pm"
+   }
+  ],
+  "experts": {
+   "note": "Kitco's weekly survey: Wall Street is split (5 up, 4 down, 5 sideways); retail is 57% bullish. Marc Chandler: gold needs to clear $4,400 to matter. James Stanley: the yield problem isn't going away soon. Adam Button: gold may need time to consolidate its run from $2,000 to $5,000.",
+   "wallStreet": {
+    "down": 4,
+    "sideways": 5,
+    "up": 5
+   }
+  },
+  "factors": [
+   {
+    "direction": "bearish",
+    "name": "Fed rate outlook",
+    "note": "Warsh has been hawkish since Jackson Hole and the Sept 16 press conference; markets price roughly 66-69% odds of an October hike.",
+    "points": -2
+   },
+   {
+    "direction": "bearish",
+    "name": "US Treasury yields",
+    "note": "10-year near 5.10%, highest since 2007. Rising yields make non-yielding gold less attractive.",
+    "points": -2
+   },
+   {
+    "direction": "bearish",
+    "name": "US dollar",
+    "note": "Dollar at a two-month high after the strongest business-activity reading in 5+ years.",
+    "points": -1
+   },
+   {
+    "direction": "bullish",
+    "name": "War & geopolitics",
+    "note": "Trump rejected Iran's 7-day Hormuz plan and expects strikes to resume after the midterms. Supportive, but escalation is not immediate and higher oil also feeds rate-hike fears.",
+    "points": 1
+   },
+   {
+    "direction": "bullish",
+    "name": "Physical & central-bank demand",
+    "note": "Central-bank buying and physical demand have repeatedly defended the $4,200-4,300 zone.",
+    "points": 1
+   },
+   {
+    "direction": "bearish",
+    "name": "Price trend",
+    "note": "Down 2.2% last week and trading below $4,280 resistance, testing $4,200.",
+    "points": -1
+   },
+   {
+    "direction": "neutral",
+    "name": "Trump / trade policy",
+    "note": "US-China summit and tariff talk in the background; nothing decisive for gold this weekend.",
+    "points": 0
+   }
+  ],
+  "fed": [
+   {
+    "source": {
+     "title": "Warsh press conference, 16 Sep 2026",
+     "url": "https://www.youtube.com/watch?v=slGPsiUhA-w"
+    },
+    "what": "Sept 16 FOMC press conference: signalled stubborn inflation may require further rate increases.",
+    "who": "Chair Kevin Warsh"
+   },
+   {
+    "source": {
+     "title": "Federal Reserve: Warsh Jackson Hole remarks",
+     "url": "https://www.federalreserve.gov/newsevents/speech/warsh20260828a.htm"
+    },
+    "what": "Jackson Hole (Aug 28): inflation a bigger concern than a slowing labour market; the Fed may have 'work to do'. Gold fell sharply that day.",
+    "who": "Chair Kevin Warsh"
+   }
+  ],
+  "generatedAt": "2026-09-28T02:30:00Z",
+  "levels": {
+   "resistance": [
+    4280,
+    4387.51,
+    4400
+   ],
+   "support": [
+    4200,
+    4150
+   ]
+  },
+  "plan": "A daily close back above $4,280 would neutralise the sell lean. A weak PCE or jobs report, or a sudden Iran escalation, is the main upside risk. A clean break below $4,200 opens room lower.",
+  "price": {
+   "asOf": "early Asia, Mon 28 Sep",
+   "changePct": -1.77,
+   "prevClose": 4284.97,
+   "spot": 4209.1
+  },
+  "score": -4,
+  "sources": [
+   {
+    "title": "Markets.com: Spot gold falls toward $4,200 (28 Sep)",
+    "url": "https://www.markets.com/news/gold-price-today-september-28-2026"
+   },
+   {
+    "title": "Kitco weekly gold survey (25 Sep)",
+    "url": "https://www.kitco.com/news/article/2026-09-25/wall-street-split-gold-price-path-after-drop-below-4300-main-street"
+   },
+   {
+    "title": "USAGOLD daily report (25 Sep)",
+    "url": "https://www.usagold.com/daily-precious-metals-market-report-september-25-2026/"
+   },
+   {
+    "title": "Al Jazeera Iran war live (26 Sep)",
+    "url": "https://www.aljazeera.com/news/liveblog/2026/9/26/iran-war-live-tehran-offers-us-plan-to-reopen-hormuz-within-seven-days"
+   },
+   {
+    "title": "NPR: Trump rejects plan to reopen Strait of Hormuz",
+    "url": "https://www.npr.org/2026/09/26/nx-s1-5981990/trump-rejects-iranian-deal-strait-of-hormuz"
+   }
+  ],
+  "summary": "Gold opened the week lower, slipping toward the $4,200 support in early Asian trade. The weekend war headline (Trump rejecting Iran's Hormuz plan) did not lift it, because high US yields, a strong dollar and ~2-in-3 odds of an October Fed hike are dominating. A heavy US data week (PCE Wednesday, jobs Friday) can flip this quickly.",
+  "trump": [
+   {
+    "source": {
+     "title": "The Hill",
+     "url": "https://thehill.com/homenews/administration/6113000-trump-iran-proposal-ceasefire/"
+    },
+    "what": "Rejected Iran's proposal to reopen the Strait of Hormuz within 7 days; reportedly expects bombing to resume after the midterms."
+   }
+  ],
+  "war": [
+   {
+    "source": {
+     "title": "The National, 26 Sep",
+     "url": "https://www.thenationalnews.com/news/mena/2026/09/26/live-us-iran-war-saudi-arabia-riyadh/"
+    },
+    "what": "Iran's FM Araghchi says only a negotiated settlement can end the deadlock; Tehran has not received an official US position."
+   },
+   {
+    "source": {
+     "title": "CNBC",
+     "url": "https://www.cnbc.com/2026/09/26/trump-rejects-irans-conditional-ceasefire-proposal-wsj-reports.html"
+    },
+    "what": "Saudi-led coalition intercepted projectiles on Sept 26 as ceasefire talks stalled."
+   }
+  ]
+ }
+]

@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Gold Morning Desk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F4EF; --surface:#FFFFFF; --surface2:#EEEDE6; --ink:#1B1E24; --muted:#5E6470; --line:#DCDAD0;
+  --gold:#A87A12; --gold-soft:#F3E7C6;
+  --bull:#1F7A4D; --bull-soft:#DDF0E5; --bear:#B3372F; --bear-soft:#F7E0DD; --flat:#6A6F7A; --flat-soft:#E7E7E3;
+  --display:"Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#121418; --surface:#1A1D23; --surface2:#22262E; --ink:#ECEAE3; --muted:#9BA1AC; --line:#2E333C;
+    --gold:#E0B04A; --gold-soft:#3A2F17;
+    --bull:#4CC38A; --bull-soft:#173327; --bear:#F07A70; --bear-soft:#3C1F1D; --flat:#A6ABB5; --flat-soft:#2A2E35;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#121418; --surface:#1A1D23; --surface2:#22262E; --ink:#ECEAE3; --muted:#9BA1AC; --line:#2E333C;
+  --gold:#E0B04A; --gold-soft:#3A2F17;
+  --bull:#4CC38A; --bull-soft:#173327; --bear:#F07A70; --bear-soft:#3C1F1D; --flat:#A6ABB5; --flat-soft:#2A2E35;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;padding:0 16px}
+.wrap{max-width:1080px;margin:0 auto;padding-block:28px 56px;display:flex;flex-direction:column;gap:22px}
+a{color:var(--gold)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.label{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:600}
+
+header.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding-bottom:14px}
+header.top h1{font-family:var(--display);font-weight:800;font-size:clamp(24px,4vw,32px);margin:0;letter-spacing:-.01em}
+header.top h1 span{color:var(--gold)}
+.stamp{font-size:13px;color:var(--muted)}
+
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px}
+@media (max-width:760px){.hero{grid-template-columns:1fr}}
+.verdict{display:flex;flex-direction:column;gap:14px}
+.pill{align-self:flex-start;font-family:var(--display);font-weight:800;font-size:clamp(26px,5vw,38px);padding:6px 16px;border-radius:10px;letter-spacing:-.01em}
+.pill.bull{background:var(--bull-soft);color:var(--bull)}
+.pill.bear{background:var(--bear-soft);color:var(--bear)}
+.pill.flat{background:var(--flat-soft);color:var(--flat)}
+.summary{font-size:16px;max-width:60ch;margin:0;text-wrap:pretty}
+.meta{display:flex;flex-wrap:wrap;gap:18px}
+.meta div{display:flex;flex-direction:column;gap:2px}
+.meta .v{font-family:var(--mono);font-size:18px;font-weight:500}
+
+/* score meter */
+.meter{display:flex;flex-direction:column;gap:8px}
+.scale{position:relative;height:14px;border-radius:7px;background:linear-gradient(90deg,var(--bear) 0%,var(--bear-soft) 38%,var(--flat-soft) 50%,var(--bull-soft) 62%,var(--bull) 100%)}
+.needle{position:absolute;top:-6px;width:4px;height:26px;border-radius:2px;background:var(--ink);transform:translateX(-50%);transition:left .4s}
+.scale-labels{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+
+.price{display:flex;flex-direction:column;gap:14px}
+.big{font-family:var(--mono);font-size:clamp(30px,6vw,44px);font-weight:600;line-height:1}
+.chg.up{color:var(--bull)} .chg.down{color:var(--bear)}
+.levels{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.lvl{background:var(--surface2);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:4px}
+.lvl ul{list-style:none;margin:0;padding:0;font-family:var(--mono);font-size:15px}
+.lvl.res .label{color:var(--bear)} .lvl.sup .label{color:var(--bull)}
+
+section.block{display:flex;flex-direction:column;gap:12px}
+section.block h2{font-family:var(--display);font-weight:700;font-size:19px;margin:0}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+@media (max-width:760px){.grid2{grid-template-columns:1fr}}
+
+table.factors{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.tbl{overflow-x:auto}
+table.factors th,table.factors td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+table.factors tr:last-child td{border-bottom:0}
+table.factors th{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--surface2)}
+.dir{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.dir.bull{background:var(--bull-soft);color:var(--bull)} .dir.bear{background:var(--bear-soft);color:var(--bear)} .dir.flat{background:var(--flat-soft);color:var(--flat)}
+.pts{font-family:var(--mono);font-weight:600;white-space:nowrap}
+.pts.bull{color:var(--bull)} .pts.bear{color:var(--bear)} .pts.flat{color:var(--flat)}
+td.fname{font-weight:600;min-width:130px}
+
+.list{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.item{padding:11px 14px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:3px}
+.item:last-child{border-bottom:0}
+.item .who{font-weight:600;font-size:14px}
+.item .src{font-size:12px;color:var(--muted)}
+.item .src a{color:var(--muted)}
+.empty{padding:12px 14px;color:var(--muted);font-size:14px}
+
+.events .item{flex-direction:row;gap:14px;align-items:flex-start}
+.events .when{font-family:var(--mono);font-size:13px;color:var(--muted);min-width:92px}
+.impact{font-size:11px;font-weight:600;padding:1px 7px;border-radius:999px;margin-left:6px}
+.impact.high{background:var(--bear-soft);color:var(--bear)} .impact.med{background:var(--gold-soft);color:var(--gold)} .impact.low{background:var(--flat-soft);color:var(--flat)}
+
+.history{display:flex;gap:4px;align-items:center;height:92px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;overflow-x:auto;position:relative}
+.history .mid{position:absolute;left:12px;right:12px;top:50%;border-top:1px dashed var(--line)}
+.hbar{flex:0 0 22px;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;cursor:pointer;background:none;border:0;padding:0;position:relative;border-radius:4px}
+.hbar:hover,.hbar.sel{background:var(--surface2)}
+.hbar i{display:block;width:12px;border-radius:2px}
+.hnote{font-size:12px;color:var(--muted)}
+
+.sources{font-size:13px;display:flex;flex-direction:column;gap:4px;margin:0;padding-left:18px}
+.disclaimer{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;max-width:80ch}
+.status{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;color:var(--muted)}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="label">XAU/USD · daily pre-market brief</div>
+      <h1>Gold Morning <span>Desk</span></h1>
+    </div>
+    <div class="stamp" id="stamp">Loading latest brief…</div>
+  </header>
+
+  <div id="app"><div class="status">Loading the latest brief…</div></div>
+
+  <p class="disclaimer">This page summarises public news and expert commentary and turns it into a rules-based score. It is information, not financial advice, and it is not a trade signal to follow blindly. Gold can gap on weekend or overnight headlines that no brief can foresee. Size positions for being wrong and use a stop-loss.</p>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const BIAS = {
+  buy:{t:"Buy bias",c:"bull"}, lean_buy:{t:"Leaning buy",c:"bull"},
+  neutral:{t:"Neutral · wait",c:"flat"},
+  lean_sell:{t:"Leaning sell",c:"bear"}, sell:{t:"Sell bias",c:"bear"}
+};
+const dirClass = d => d==="bullish"?"bull":d==="bearish"?"bear":"flat";
+const fmt = n => typeof n==="number" ? n.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2}) : "—";
+const fmtDate = d => { try{ return new Date(d+"T00:00:00").toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short",year:"numeric"}); }catch(e){ return d; } };
+const link = (s) => s && s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title||s.url)}</a>` : esc(s?.title||"");
+
+let briefs = [], selected = null;
+
+function listItems(arr, emptyText){
+  if(!arr || !arr.length) return `<div class="empty">${esc(emptyText)}</div>`;
+  return arr.map(x=>`<div class="item">${x.who?`<div class="who">${esc(x.who)}</div>`:""}<div>${esc(x.what)}</div>${x.source?`<div class="src">${link(x.source)}</div>`:""}</div>`).join("");
+}
+
+function render(){
+  const b = briefs.find(x=>x.date===selected) || briefs[0];
+  if(!b){ $("#app").innerHTML = `<div class="status">No briefs yet. The first one is written each weekday morning before MCX opens.</div>`; $("#stamp").textContent=""; return; }
+  const bias = BIAS[b.bias] || BIAS.neutral;
+  const score = Math.max(-10, Math.min(10, Number(b.score)||0));
+  const pos = ((score + 10) / 20) * 100;
+  const p = b.price || {};
+  const up = (p.changePct||0) >= 0;
+  const gen = b.generatedAt ? new Date(b.generatedAt).toLocaleString("en-IN",{dateStyle:"medium",timeStyle:"short",timeZone:"Asia/Kolkata"})+" IST" : "";
+  $("#stamp").textContent = `Brief for ${fmtDate(b.date)}${gen?` · written ${gen}`:""}`;
+
+  const factors = (b.factors||[]).map(f=>{
+    const c = dirClass(f.direction); const pts = Number(f.points)||0;
+    return `<tr><td class="fname">${esc(f.name)}</td><td><span class="dir ${c}">${esc(f.direction||"neutral")}</span></td><td class="pts ${c}">${pts>0?"+":""}${pts}</td><td>${esc(f.note)}</td></tr>`;
+  }).join("");
+
+  const events = (b.events||[]).length ? b.events.map(e=>{
+    const imp = (e.impact||"").toLowerCase(); const ic = imp.startsWith("h")?"high":imp.startsWith("m")?"med":"low";
+    return `<div class="item"><div class="when">${esc(e.when)}</div><div><strong>${esc(e.event)}</strong><span class="impact ${ic}">${esc(e.impact||"low")}</span>${e.note?`<div class="src">${esc(e.note)}</div>`:""}</div></div>`;
+  }).join("") : `<div class="empty">No major scheduled events.</div>`;
+
+  const hist = briefs.slice(0,30).reverse().map(h=>{
+    const s = Math.max(-10,Math.min(10,Number(h.score)||0)); const c = s>0?"var(--bull)":s<0?"var(--bear)":"var(--flat)";
+    const hgt = Math.max(3, Math.abs(s)/10*34);
+    const style = s>=0 ? `height:${hgt}px;background:${c};margin-bottom:${hgt}px` : `height:${hgt}px;background:${c};margin-top:${hgt}px`;
+    return `<button class="hbar ${h.date===b.date?"sel":""}" data-d="${esc(h.date)}" title="${esc(fmtDate(h.date))}: score ${s} (${esc((BIAS[h.bias]||BIAS.neutral).t)})" aria-label="${esc(fmtDate(h.date))} score ${s}"><i style="${style}"></i></button>`;
+  }).join("");
+
+  const ex = b.experts || {};
+  const ws = ex.wallStreet;
+
+  $("#app").innerHTML = `
+  <div style="display:flex;flex-direction:column;gap:22px">
+  <div class="hero">
+    <div class="verdict">
+      <div class="label">Today's bias</div>
+      <div class="pill ${bias.c}">${bias.t}</div>
+      <p class="summary">${esc(b.summary)}</p>
+      <div class="meter">
+        <div class="scale" role="img" aria-label="Score ${score} out of plus or minus 10"><div class="needle" style="left:${pos}%"></div></div>
+        <div class="scale-labels mono"><span>−10 sell</span><span>0</span><span>+10 buy</span></div>
+      </div>
+      <div class="meta">
+        <div><span class="label">Score</span><span class="v">${score>0?"+":""}${score}</span></div>
+        <div><span class="label">Confidence</span><span class="v">${esc(b.confidence||"—")}</span></div>
+        ${ws?`<div><span class="label">Kitco Wall St poll</span><span class="v">${ws.up}↑ ${ws.down}↓ ${ws.sideways}→</span></div>`:""}
+      </div>
+    </div>
+    <div class="price">
+      <div class="label">Spot gold (USD/oz)${p.asOf?` · ${esc(p.asOf)}`:""}</div>
+      <div class="big">$${fmt(p.spot)}</div>
+      <div class="mono chg ${up?"up":"down"}">${typeof p.changePct==="number"?`${up?"▲":"▼"} ${Math.abs(p.changePct).toFixed(2)}%`:""}${typeof p.prevClose==="number"?` <span style="color:var(--muted)">vs prev close $${fmt(p.prevClose)}</span>`:""}</div>
+      <div class="levels">
+        <div class="lvl res"><span class="label">Resistance</span><ul>${(b.levels?.resistance||[]).map(v=>`<li>$${fmt(v)}</li>`).join("")||"<li>—</li>"}</ul></div>
+        <div class="lvl sup"><span class="label">Support</span><ul>${(b.levels?.support||[]).map(v=>`<li>$${fmt(v)}</li>`).join("")||"<li>—</li>"}</ul></div>
+      </div>
+      ${b.plan?`<div class="lvl"><span class="label">What would change the call</span><div style="font-size:14px">${esc(b.plan)}</div></div>`:""}
+    </div>
+  </div>
+
+  <section class="block">
+    <h2>How the score was built</h2>
+    <div class="tbl"><table class="factors"><thead><tr><th>Driver</th><th>Effect on gold</th><th>Points</th><th>Why</th></tr></thead><tbody>${factors}</tbody></table></div>
+  </section>
+
+  <div class="grid2">
+    <section class="block"><h2>Fed &amp; Fed speakers</h2><div class="list">${listItems(b.fed,"No new Fed comments since the last brief.")}</div></section>
+    <section class="block"><h2>Trump</h2><div class="list">${listItems(b.trump,"Nothing market-moving from Trump since the last brief.")}</div></section>
+  </div>
+  <div class="grid2">
+    <section class="block"><h2>War &amp; geopolitics</h2><div class="list">${listItems(b.war,"No major geopolitical change.")}</div></section>
+    <section class="block"><h2>Calendar (IST)</h2><div class="list events">${events}</div></section>
+  </div>
+
+  ${ex.note?`<section class="block"><h2>What experts are saying</h2><div class="list"><div class="item">${esc(ex.note)}</div></div></section>`:""}
+
+  <section class="block">
+    <h2>Last 30 briefs</h2>
+    <div class="history"><div class="mid"></div>${hist}</div>
+    <div class="hnote">Bars above the line leaned buy, below leaned sell. Tap a bar to open that day's brief.</div>
+  </section>
+
+  ${(b.sources||[]).length?`<section class="block"><h2>Sources</h2><ol class="sources">${b.sources.map(s=>`<li>${link(s)}</li>`).join("")}</ol></section>`:""}
+  </div>`;
+
+  document.querySelectorAll(".hbar").forEach(el=>el.addEventListener("click",()=>{ selected = el.dataset.d; render(); }));
+}
+
+(async function start(){
+  try{
+    const r = await fetch("data/briefs.json?t=" + Date.now(), {cache:"no-store"});
+    if(!r.ok) throw new Error(r.status);
+    const all = await r.json();
+    briefs = (Array.isArray(all)?all:[]).sort((a,b)=>b.date<a.date?-1:1).slice(0,60);
+    render();
+  }catch(e){
+    $("#app").innerHTML = `<div class="status">Couldn't load briefs right now. Reload the page to try again.</div>`; $("#stamp").textContent="";
+  }
+})();
+</script>
+
+</body>
+</html>
